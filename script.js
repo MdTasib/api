@@ -34,3 +34,30 @@
 //         .then((response) => response.json())
 //         .then(data => console.log(data));
 // }
+
+
+// Explore fun tasks with bored api (3) // site name -> Bored API Documentation
+// function doSomething() {
+//     fetch('http://www.boredapi.com/api/activity/')
+//         .then(response => response.json())
+//         .then(data => {
+//             document.getElementById('activity').innerText = data.activity;
+//         })
+// }
+// setInterval(() => {
+//     doSomething()
+// }, 2000)
+
+// Explore Random User API Who Am I // site name -> randomuser.me
+// function autoUser() {
+//     fetch('https://randomuser.me/api/')
+//         .then(response => response.json())
+//         .then(data => {
+//             const user = data.results[0].name;
+//             const userName = `${user.title} ${user.first} ${user.last}`
+//             document.getElementById('name').innerText = userName;
+//         })
+// }
+// setInterval(() => {
+//     autoUser();
+// }, 2000)
