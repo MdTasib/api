@@ -9,7 +9,7 @@
 <!-- style css -->
 <style>
     button {
-        padding: 10px;
+        padding: 5px;
         width: 100px;
         margin: 10px;
     }
@@ -34,9 +34,17 @@
                 const xhr = new XMLHttpRequest();
                 xhr.open(method, url);
                 xhr.responseType = 'json';
+                xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.send(data);
                 xhr.onload = function () {
-                    resolve(xhr.response);
+                    if (xhr.status >= 400) {
+                        reject(xhr.response);
+                    } else {
+                        resolve(xhr.response)
+                    };
+                };
+                xhr.onerror = function () {
+                    reject('something was wrong!');
                 };
             });
             return promise;
@@ -48,11 +56,12 @@
                 .then(responseData => { console.log(responseData) });
         };
         const sendData = function () {
-            sendRequest('POST', 'https://jsonplaceholder.typicode.com/posts', JSON.stringify({
+            sendRequest('POST', 'https://jsonplaceholder.typicode.com/post', JSON.stringify({
                 title: 'foo',
                 body: 'bar',
                 userId: 1
-            })).then(responseData => { console.log(responseData) });
+            })).then(responseData => { console.log(responseData) })
+                .catch(err => console.log(err));
         };
         getButton.addEventListener('click', getData);
         sendButton.addEventListener('click', sendData);
