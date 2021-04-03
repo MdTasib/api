@@ -50,11 +50,11 @@
             return promise;
         };
 
-
         const getData = function () {
             sendRequest('GET', 'https://jsonplaceholder.typicode.com/todos/1')
                 .then(responseData => { console.log(responseData) });
         };
+        
         const sendData = function () {
             sendRequest('POST', 'https://jsonplaceholder.typicode.com/post', JSON.stringify({
                 title: 'foo',
